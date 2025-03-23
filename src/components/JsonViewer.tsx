@@ -14,13 +14,13 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
   // Function to render a value based on its type
   const renderValue = (value: any) => {
     if (value === null) return <span className="text-gray-400">null</span>;
-    if (typeof value === "boolean") return <span className="text-purple-600">{value.toString()}</span>;
-    if (typeof value === "number") return <span className="text-amber-600">{value}</span>;
-    if (typeof value === "string") return <span className="text-green-600">"{value}"</span>;
+    if (typeof value === "boolean") return <span className="text-purple-600 dark:text-purple-400">{value.toString()}</span>;
+    if (typeof value === "number") return <span className="text-amber-600 dark:text-amber-400">{value}</span>;
+    if (typeof value === "string") return <span className="text-green-600 dark:text-green-400">"{value}"</span>;
     if (Array.isArray(value)) {
       if (value.length === 0) return <span className="text-gray-400">[]</span>;
       return (
-        <div className="pl-4 border-l-2 border-border">
+        <div className="pl-4 border-l-2 border-border/60">
           {value.map((item, index) => (
             <div key={index} className="mb-2">
               <span className="mr-2 text-muted-foreground">{index}:</span>
@@ -41,7 +41,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
     if (!data) return null;
     
     return (
-      <Card className="border border-border shadow-sm mb-4">
+      <Card className="border border-border/60 shadow-md dark:shadow-card-dark dark:bg-secondary/10 glass-card transition-all duration-200 hover:shadow-card-hover-dark mb-4">
         <CardContent className="p-4">
           {Object.entries(data).map(([key, value]) => (
             <div key={key} className="mb-3">
@@ -66,18 +66,18 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
     );
     
     return (
-      <div className="overflow-auto">
+      <div className="overflow-auto rounded-lg border border-border/60">
         <Table className="min-w-full">
           <TableHeader>
-            <TableRow>
+            <TableRow className="bg-secondary/30 dark:bg-secondary/20">
               {allKeys.map(key => (
-                <TableHead key={key}>{key}</TableHead>
+                <TableHead key={key} className="font-medium">{key}</TableHead>
               ))}
             </TableRow>
           </TableHeader>
           <TableBody>
             {data.map((item, index) => (
-              <TableRow key={index}>
+              <TableRow key={index} className="hover:bg-secondary/20">
                 {allKeys.map(key => (
                   <TableCell key={`${index}-${key}`}>
                     {item[key] !== undefined ? renderValue(item[key]) : "-"}
@@ -94,7 +94,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
   // Section renderer
   const renderSection = (title: string, content: any) => {
     return (
-      <Card className="border border-border shadow-sm mb-6">
+      <Card className="border border-border/60 shadow-md dark:shadow-card-dark transition-all duration-200 hover:shadow-card-hover-dark mb-6 dark:bg-secondary/10 glass-card">
         <CardHeader className="pb-2">
           <CardTitle className="text-lg">{title}</CardTitle>
         </CardHeader>
@@ -114,7 +114,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
       label: "Overview",
       content: (
         <div className="space-y-6">
-          <Card className="border border-border shadow-sm">
+          <Card className="border border-border/60 shadow-md dark:shadow-card-dark transition-all duration-200 hover:shadow-card-hover-dark dark:bg-secondary/10 glass-card">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg">Basic Information</CardTitle>
             </CardHeader>
@@ -190,7 +190,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
             <div className="space-y-4">
               {Array.isArray(data.transforms) ? 
                 data.transforms.map((transform, index) => (
-                  <Card key={index} className="border border-border shadow-sm">
+                  <Card key={index} className="border border-border/60 shadow-md dark:shadow-card-dark dark:bg-secondary/10 glass-card transition-all duration-200 hover:shadow-card-hover-dark">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-md">{transform.name || `Transform ${index + 1}`}</CardTitle>
                     </CardHeader>
@@ -198,7 +198,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
                       {transform.rules && (
                         <div>
                           <h3 className="text-primary font-medium mb-2">Rules</h3>
-                          <div className="bg-secondary/30 p-4 rounded-md">
+                          <div className="bg-secondary/30 dark:bg-secondary/20 p-4 rounded-md">
                             {Array.isArray(transform.rules) ? 
                               transform.rules.map((rule, idx) => (
                                 <div key={idx} className="mb-1 font-mono text-sm">{rule}</div>
@@ -242,7 +242,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
             <div className="space-y-4">
               {Array.isArray(data.sql_scripts) ? 
                 data.sql_scripts.map((script, index) => (
-                  <Card key={index} className="border border-border shadow-sm">
+                  <Card key={index} className="border border-border/60 shadow-md dark:shadow-card-dark dark:bg-secondary/10 glass-card transition-all duration-200 hover:shadow-card-hover-dark">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-md">{script.stage || `Script ${index + 1}`}</CardTitle>
                     </CardHeader>
@@ -257,7 +257,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({ data, className }) => {
                       {script.sql && (
                         <div>
                           <h3 className="text-primary font-medium mb-2">SQL</h3>
-                          <div className="bg-secondary/30 p-4 rounded-md overflow-auto">
+                          <div className="bg-secondary/30 dark:bg-secondary/20 p-4 rounded-md overflow-auto">
                             <pre className="font-mono text-sm whitespace-pre-wrap">{script.sql}</pre>
                           </div>
                         </div>

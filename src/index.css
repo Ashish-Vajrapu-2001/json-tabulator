@@ -39,33 +39,33 @@
   }
 
   .dark {
-    --background: 220 14% 10%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 220 14% 10%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 14% 10%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 220 86% 57%;
+    --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 215 28% 17%;
+    --secondary: 217 32% 17%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 215 28% 17%;
-    --muted-foreground: 217.9 10.6% 64.9%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 215 28% 17%;
+    --accent: 217 32% 17%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 224 76.3% 48%;
   }
 }
 
@@ -93,15 +93,15 @@
 }
 
 .json-string {
-  @apply text-green-600;
+  @apply text-green-600 dark:text-green-400;
 }
 
 .json-number {
-  @apply text-amber-600;
+  @apply text-amber-600 dark:text-amber-400;
 }
 
 .json-boolean {
-  @apply text-purple-600;
+  @apply text-purple-600 dark:text-purple-400;
 }
 
 .json-null {
@@ -141,4 +141,13 @@
 
 .file-drop-zone.active {
   @apply bg-accent border-primary/40 transform scale-[1.01];
+}
+
+/* Glassmorphism styles */
+.glass-card {
+  @apply backdrop-blur-lg bg-white/5 dark:bg-black/20 border border-white/10 dark:border-white/5;
+}
+
+.card-gradient {
+  @apply bg-gradient-to-br from-card to-card/70;
 }

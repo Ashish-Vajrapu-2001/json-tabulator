@@ -44,7 +44,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
       onValueChange={handleTabChange}
       className="w-full animate-fade-in"
     >
-      <div className="border-b border-border">
+      <div className="border-b border-border/60 bg-secondary/5 rounded-t-lg">
         <TabsList className="mx-4 bg-transparent h-14">
           {tabs.map((tab) => (
             <TabsTrigger
@@ -64,7 +64,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
       <div
         ref={tabContentsRef}
         className={cn(
-          "tab-content p-4 transition-opacity duration-200",
+          "tab-content p-4 transition-opacity duration-200 bg-card/50 rounded-b-lg",
           animating ? "opacity-0" : "opacity-100 animate-slide-up"
         )}
       >
