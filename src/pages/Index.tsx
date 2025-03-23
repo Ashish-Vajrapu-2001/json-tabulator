@@ -5,7 +5,7 @@ import JsonViewer from "@/components/JsonViewer";
 import EmptyState from "@/components/EmptyState";
 import { Button } from "@/components/ui/button";
 import { Download, Upload } from "lucide-react";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 const Index = () => {

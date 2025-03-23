@@ -1,7 +1,6 @@
-
 import React, { useCallback, useState } from "react";
 import { FileJson, Upload } from "lucide-react";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 interface FileUploadProps {
   onFileUploaded: (jsonData: any) => void;
